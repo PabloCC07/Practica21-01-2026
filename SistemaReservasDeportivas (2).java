@@ -5,7 +5,6 @@ import java.util.List;
 /**
  * @author Pablo Cuadrado
  */
-
 public class SistemaReservasDeportivas {
 
     /**
@@ -14,9 +13,9 @@ public class SistemaReservasDeportivas {
     private List<Reserva> reservas;
 
     /**
-     * boolean que dice si las luces están encendidas o apagadas
+     * gestor encargado de la iluminación de las pistas
      */
-    private boolean[] iluminacion;
+    private GestorIluminacion gestorIluminacion;
 
     /**
      * el número máximo de pistas que puede manejar el sistema
@@ -28,7 +27,7 @@ public class SistemaReservasDeportivas {
      */
     public SistemaReservasDeportivas() {
         reservas = new ArrayList<>();
-        iluminacion = new boolean[MAX_PISTAS];
+        gestorIluminacion = new GestorIluminacion(MAX_PISTAS);
     }
 
     /**
@@ -92,11 +91,7 @@ public class SistemaReservasDeportivas {
      * existe o si no existe
      */
     public boolean encenderLuces(int idPista) {
-        if (idPista < 0 || idPista >= MAX_PISTAS) {
-            return false; // ID de pista inválido
-        }
-        iluminacion[idPista] = true;
-        return true;
+        return gestorIluminacion.encenderLuces(idPista);
     }
 
     /**
@@ -107,11 +102,7 @@ public class SistemaReservasDeportivas {
      * id existe o true si el id no existe
      */
     public boolean apagarLuces(int idPista) {
-        if (idPista < 0 || idPista >= MAX_PISTAS) {
-            return false; // ID de pista inválido
-        }
-        iluminacion[idPista] = false;
-        return true;
+        return gestorIluminacion.apagarLuces(idPista);
     }
 
     /**
