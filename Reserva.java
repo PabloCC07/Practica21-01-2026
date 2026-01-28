@@ -1,5 +1,9 @@
 import java.time.LocalDate;
 
+/**
+ * @author Pablo Cuadrado
+ */
+
 public class Reserva {
 
     /**
